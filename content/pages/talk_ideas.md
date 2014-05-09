@@ -43,4 +43,4 @@ or submit a pull request to add your idea.
 * working with spreadsheets: [OpenPyXL](http://pythonhosted.org/openpyxl/)
 * [Vim](http://www.vim.org/) integration
 * Python IDEs
-* ....add some stuff here
+* ....add some stuff here [test tobie]

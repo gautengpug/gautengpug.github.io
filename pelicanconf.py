@@ -31,7 +31,7 @@ DEFAULT_PAGINATION = False
 THEME = 'pelican-bootstrap3'
 
 #settings for the site itself
-DISPLAY_CATEGORIES_ON_MENU = True
+DISPLAY_CATEGORIES_ON_MENU = False #changing this to see how blog looks with categories on it
 SHOW_ARTICLE_CATEGORY = True
 PYGMENTS_STYLE = 'emacs'
 DISPLAY_BREADCRUMBS = True

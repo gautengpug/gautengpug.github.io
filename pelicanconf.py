@@ -31,9 +31,19 @@ DEFAULT_PAGINATION = False
 THEME = 'pelican-bootstrap3'
 
 #settings for the site itself
-DISPLAY_CATEGORIES_ON_MENU = False #changing this to see how blog looks with categories on it
+DISPLAY_CATEGORIES_ON_MENU = True # Only using 'Blog' as a category now, everything else will be a tag
 SHOW_ARTICLE_CATEGORY = True
 PYGMENTS_STYLE = 'emacs'
 DISPLAY_BREADCRUMBS = True
 DISPLAY_CATEGORY_IN_BREADCRUMBS = True
 DISPLAY_TAGS_ON_SIDEBAR = True
+
+#new settings on 14/5/2014
+BOOTSTRAP_THEME = 'flatly' #theme change, see static/css/ for other options
+TAG_CLOUD_MAX_ITEMS = 15
+#need to test this feature below for archives
+MONTH_ARCHIVE_SAVE_AS = '{date:%Y}/{date:%b}/index.html'
+CATEGORY_SAVE_AS = 'category/{slug}.html'
+CATEGORY_URL = 'category/{slug}.html'
+TAG_SAVE_AS = 'tag/{slug}.html'
+TAG_URL = 'tag/{slug}.html'

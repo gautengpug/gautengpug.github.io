@@ -18,7 +18,7 @@ TRANSLATION_FEED_ATOM = None
 # Blogroll
 LINKS =  (('This page', 'http://gautengpug.github.io/'),
           ('Google Group', 'https://groups.google.com/forum/#!forum/gpugsa'),
-          ('Meetup link coming soon', '#'),)
+          ('Meetup Group', 'http://www.meetup.com/Gauteng-Python-Users-Group/'),)
 
 # Social widget
 SOCIAL = (('github', 'http://github.com/gautengpug'),)

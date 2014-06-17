@@ -1,7 +1,7 @@
 Title: 1st Meetup: April 2014
 Date: 2014-04-19 13:00
 Category: Blog
-Tags: 2014-april, ipython, reahl
+Tags: 2014, meetup, talks, ipython, reahl
 Author: Hussain
 Summary: Feedback on the first meetup event.
 

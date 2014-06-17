@@ -1,7 +1,7 @@
 Title: 2nd Meetup: May 2014
 Date: 2014-05-31 13:00
 Category: Blog
-Tags: 2014-may, pythonbrew, portia, acc-software, decorators, ipython
+Tags: 2014, meetup, talk, pythonbrew, portia, accounting, decorators, ipython
 Author: Hussain
 Summary: Feedback on the second meetup event.
 

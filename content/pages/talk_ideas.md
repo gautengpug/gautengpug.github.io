@@ -1,7 +1,8 @@
 Title: Talk Ideas
 
-A listing of ideas we can consider for our future meetings. Admins please add,
-or submit a pull request to add your idea.
+This page lists topic ideas we can consider for our future meetups. Please
+submit a [pull request](https://github.com/gautengpug/site_generate/pulls) to
+add your idea.
 
   * decorators
   * regular expressions
@@ -43,4 +44,4 @@ or submit a pull request to add your idea.
   * working with spreadsheets: [OpenPyXL](http://pythonhosted.org/openpyxl/)
   * [Vim](http://www.vim.org/) integration
   * Python IDEs
-  * ....add some stuff here [test tobie]
+  * *add your suggestions here...*

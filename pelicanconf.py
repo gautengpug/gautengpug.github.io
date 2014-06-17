@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Gauteng Python User Group'
-SITENAME = u'gautengpug'
+SITENAME = u'Gauteng Python User Group'
 SITEURL = ''
 
 TIMEZONE = 'Africa/Johannesburg'

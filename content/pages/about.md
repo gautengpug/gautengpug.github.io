@@ -2,8 +2,8 @@ Title: About
 
 The group was a (*very* low volume) Google Groups only discussion group, until
 [Hussain](https://github.com/Kentoseth) took the initiative to organise a
-meetup. Consequently, the [first meetup]({filename}/Blog Post 1.md) was hosted
-on 12 April 2014 at [House4Hack](http://www.house4hack.co.za).
+meetup. Consequently, the [first meetup]({filename}/april2014_meetup_feedback.md)
+was hosted on 12 April 2014 at [House4Hack](http://www.house4hack.co.za).
 
 Honourary list of first meetup attendees:
 

@@ -2,7 +2,7 @@ Title: Home
 Url:
 Save_as: index.html
 
-## >>>>  NEXT MEETUP - [28 June 2014]({filename}/june_meetup.md)
+## >>>>  NEXT MEETUP - [28 June 2014]({filename}/june2014_meetup.md)
 
 
 

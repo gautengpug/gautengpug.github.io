@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Gauteng Python User Group</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2014-06-17T21:47:00+02:00</updated><entry><title>Meetup: June 2014</title><link href="/meetup-june-2014.html" rel="alternate"></link><updated>2014-06-17T21:47:00+02:00</updated><author><name>Walter</name></author><id>tag:,2014-06-17:meetup-june-2014.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;meetup&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Meetup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-                    &lt;span class="n"&gt;duration&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hours&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-                    &lt;span class="n"&gt;venue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;confirm_venue&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+                    &lt;span class="n"&gt;duration&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hours&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                    &lt;span class="n"&gt;venue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;gauteng&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;joburg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;JoziHub&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -9,9 +9,14 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Python and Excel Integration Using PyXll&lt;/strong&gt; (Tobie)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Introduction to MongoDB in Python&lt;/strong&gt; (Walter)&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;More to follow... probably.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;More to follow... maybe.&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;If you are planning on attending, please RSVP on the &lt;a href="http://www.meetup.com/Gauteng-Python-Users-Group/events/189529862/"&gt;meetup page&lt;/a&gt;.&lt;/p&gt;</summary><category term="2014"></category><category term="meetup"></category><category term="talks"></category><category term="mongodb"></category><category term="pyxll"></category></entry><entry><title>2nd Meetup: May 2014</title><link href="/2nd-meetup-may-2014.html" rel="alternate"></link><updated>2014-05-31T13:00:00+02:00</updated><author><name>Hussain</name></author><id>tag:,2014-05-31:2nd-meetup-may-2014.html</id><summary type="html">&lt;p&gt;Our second meetup was held on 17 May at the House4Hack.&lt;/p&gt;
+&lt;h2&gt;RSVP: &lt;a href="http://www.meetup.com/Gauteng-Python-Users-Group/events/189529862/"&gt;Meetup page&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://jozihub.co.za"&gt;JoziHub&lt;/a&gt; is located at
+&lt;a href="http://www.openstreetmap.org/way/162961866#map=18/-26.18514/28.01931"&gt;44 Stanley Ave in Millpark&lt;/a&gt;.
+We have the venue until 14:00, but we might not go on that long.&lt;/p&gt;
+&lt;p&gt;Feel free to discuss or ask questions on the relevant
+&lt;a href="https://groups.google.com/forum/?hl=en-GB#!topic/gpugsa/ui0o6YcJj1I"&gt;Google Groups page&lt;/a&gt;.&lt;/p&gt;</summary><category term="2014"></category><category term="meetup"></category><category term="talks"></category><category term="mongodb"></category><category term="pyxll"></category></entry><entry><title>2nd Meetup: May 2014</title><link href="/2nd-meetup-may-2014.html" rel="alternate"></link><updated>2014-05-31T13:00:00+02:00</updated><author><name>Hussain</name></author><id>tag:,2014-05-31:2nd-meetup-may-2014.html</id><summary type="html">&lt;p&gt;Our second meetup was held on 17 May at the House4Hack.&lt;/p&gt;
 &lt;p&gt;We were expecting an attendance of 5 confirmed pythonistas, with any others that aren't that familiar with our group yet, to come through as well.&lt;/p&gt;
 &lt;p&gt;Unfortunately 2 members couldn't make it, so we were 3 pythonistas, with Gert being the *wildcard attendee (this proved to be an insightful activity, as Gert shared some interesting knowledge with us, but more on that later).&lt;/p&gt;
 &lt;h3&gt;We had 3 presentations (+ informal discussion) conducted on the day. These were:&lt;/h3&gt;

@@ -39,7 +39,7 @@ DISPLAY_TAGS_ON_SIDEBAR = True
 DISPLAY_TAGS_INLINE = True
 
 #new settings on 14/5/2014
-BOOTSTRAP_THEME = 'flatly' #theme change, see static/css/ for other options
+BOOTSTRAP_THEME = 'spacelab' #theme change, see static/css/ for other options
 TAG_CLOUD_MAX_ITEMS = 15
 #need to test this feature below for archives
 MONTH_ARCHIVE_SAVE_AS = '{date:%Y}/{date:%b}/index.html'

@@ -9,13 +9,20 @@ Announcement_text: 28 June 2014
 
     :::python
     >>> meetup = Meetup(start=datetime(2014, 6, 28, 9, 00),
-                        duration=timedelta(hours=4),
-                        venue=confirm_venue())
+                        duration=timedelta(hours=5),
+                        venue=gauteng.joburg.JoziHub)
 
 This will be our third monthly meetup. The following talks will be presented:
 
 * **Python and Excel Integration Using PyXll** (Tobie)
 * **Introduction to MongoDB in Python** (Walter)
-* *More to follow... probably.*
+* *More to follow... maybe.*
 
-If you are planning on attending, please RSVP on the [meetup page](http://www.meetup.com/Gauteng-Python-Users-Group/events/189529862/).
+## RSVP: [Meetup page](http://www.meetup.com/Gauteng-Python-Users-Group/events/189529862/)
+
+[JoziHub](http://jozihub.co.za) is located at
+[44 Stanley Ave in Millpark](http://www.openstreetmap.org/way/162961866#map=18/-26.18514/28.01931).
+We have the venue until 14:00, but we might not go on that long.
+
+Feel free to discuss or ask questions on the relevant
+[Google Groups page](https://groups.google.com/forum/?hl=en-GB#!topic/gpugsa/ui0o6YcJj1I).

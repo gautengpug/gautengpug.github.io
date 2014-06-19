@@ -36,6 +36,7 @@ PYGMENTS_STYLE = 'emacs'
 DISPLAY_BREADCRUMBS = True
 DISPLAY_CATEGORY_IN_BREADCRUMBS = True
 DISPLAY_TAGS_ON_SIDEBAR = True
+DISPLAY_TAGS_INLINE = True
 
 #new settings on 14/5/2014
 BOOTSTRAP_THEME = 'flatly' #theme change, see static/css/ for other options

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if output_file == 'index.html' %}
+        {% if SHOW_ANNOUNCEMENT_ON_HOME %}
+            {% set ann = articles|selectattr('announcement_text')|first %}
+            {% if ann %}
+                <div class="alert alert-success">
+                    <h2 class="text-center">
+                        <a href="{{ SITEURL }}/{{ ann.url }}">{{ ANNOUNCEMENT_PREFIX|default('') }}{{ ann.announcement_text }}</a>
+                    </h2>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        {% if EMBED_PAGES_IN_HOME %}
+            {% for page in pages|selectattr('embed_in_homepage') %}
+                {% if EMBED_PAGES_TITLES_IN_HOME %}
+                    <h2><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></h2>
+                {% endif %}
+                <div class="embedded-page-content">
+                  {{ page.content }}
+                </div>
+                <hr/>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+
+    {% if articles %}
+        {% set display_articles = (articles_page.object_list if articles_page else articles) %}
+        {% if output_file == 'index.html' %}
+            {% set display_articles = display_articles|batch(5)|first %}
+            <h2>Recent Articles:</h2>
+        {% endif %}
+        {% for article in display_articles %}
+            <article>
+                <h3><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+                {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
+                    <div class="well well-sm">
+                        {% include "includes/article_info.html" %}
+                    </div>
+                {% endif %}
+                <div class="summary">
+                    <a class="pull-right btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">more…</a>
+                    {{ article.summary }}
+                    {% include 'includes/comment_count.html' %}
+                </div>
+            </article>
+            <hr/>
+        {% endfor %}
+    {% else %}
+        <h2 class="well">No articles :(</h2>
+    {% endif %}
+
+    {% include 'includes/pagination.html' %}
+{% endblock content %}

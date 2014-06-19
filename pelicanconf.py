@@ -46,3 +46,6 @@ CATEGORY_SAVE_AS = 'category/{slug}.html'
 CATEGORY_URL = 'category/{slug}.html'
 TAG_SAVE_AS = 'tag/{slug}.html'
 TAG_URL = 'tag/{slug}.html'
+
+SHOW_ANNOUNCEMENT_ON_HOME = True
+ANNOUNCEMENT_PREFIX = '<i class="fa fa-bullhorn"></i> NEXT MEETUP: '

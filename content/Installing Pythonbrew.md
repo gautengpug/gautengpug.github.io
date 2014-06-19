@@ -1,6 +1,6 @@
 Title: How to install Pythonbrew
 Date: 2014-05-16 02:00
-Tags: 2014-may, pythonbrew
+Tags: 2014, talks, pythonbrew
 Author: Hussain
 Summary: A quick guide to installing pythonbrew on your system.
 

@@ -4,6 +4,7 @@ Category: Blog
 Tags: 2014, talks, mongodb, pyxll
 Author: Walter
 Summary: Details regarding our third (June) monthly meetup.
+Announcement_text: 28 June 2014
 
 
     :::python

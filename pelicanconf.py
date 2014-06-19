@@ -27,7 +27,7 @@ DEFAULT_PAGINATION = False
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-THEME = 'pelican-bootstrap3'
+THEME = 'gpuglican'
 
 #settings for the site itself
 DISPLAY_CATEGORIES_ON_MENU = True # Only using 'Blog' as a category now, everything else will be a tag

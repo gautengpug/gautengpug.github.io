@@ -26,7 +26,12 @@
     {% endif %}
 
     {% if articles %}
-        {% for article in (articles_page.object_list if articles_page else articles) %}
+        {% set display_articles = (articles_page.object_list if articles_page else articles) %}
+        {% if output_file == 'index.html' %}
+            {% set display_articles = display_articles|batch(5)|first %}
+            <h2>Recent Articles:</h2>
+        {% endif %}
+        {% for article in display_articles %}
             <article>
                 <h3><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
                 {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
@@ -41,6 +46,8 @@
             </article>
             <hr/>
         {% endfor %}
+    {% else %}
+        <h2 class="well">No articles :(</h2>
     {% endif %}
 
     {% include 'includes/pagination.html' %}

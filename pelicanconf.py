@@ -49,3 +49,4 @@ TAG_URL = 'tag/{slug}.html'
 
 SHOW_ANNOUNCEMENT_ON_HOME = True
 ANNOUNCEMENT_PREFIX = '<i class="fa fa-bullhorn"></i> NEXT MEETUP: '
+EMBED_PAGES_IN_HOME = True

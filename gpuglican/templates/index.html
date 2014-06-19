@@ -11,12 +11,18 @@
                 </div>
             {% endif %}
         {% endif %}
-<p>Welcome!</p>
-<p>This is the dedicated site for the Gauteng Python User Group.</p>
-<p>We host monthly meetups on Saturdays between 13.00 - 17.00, normally at the House4Hack in Lyttleton, Centurion.</p>
-<p>All Pythonistas are welcome to join us.</p>
-<p>Consult the links on the right for further info( -&gt; ).</p>
-<hr/>
+
+        {% if EMBED_PAGES_IN_HOME %}
+            {% for page in pages|selectattr('embed_in_homepage') %}
+                {% if EMBED_PAGES_TITLES_IN_HOME %}
+                    <h2><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></h2>
+                {% endif %}
+                <div class="embedded-page-content">
+                  {{ page.content }}
+                </div>
+                <hr/>
+            {% endfor %}
+        {% endif %}
     {% endif %}
 
     {% if articles %}

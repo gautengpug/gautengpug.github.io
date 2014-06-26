@@ -14,9 +14,9 @@ Announcement_text: 28 June 2014
 
 This will be our third monthly meetup. The following talks will be presented:
 
-* **Python and Excel Integration Using PyXll** (Tobie)
+* <s>**Python and Excel Integration Using PyXll** (Tobie)</s>
+* **Development of Account Software** (Frank)
 * **Introduction to MongoDB in Python** (Walter)
-* *More to follow... maybe.*
 
 ## RSVP: [Meetup page](http://www.meetup.com/Gauteng-Python-Users-Group/events/189529862/)
 

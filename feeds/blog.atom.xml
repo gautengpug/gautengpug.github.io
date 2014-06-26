@@ -7,9 +7,9 @@
 
 &lt;p&gt;This will be our third monthly meetup. The following talks will be presented:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Python and Excel Integration Using PyXll&lt;/strong&gt; (Tobie)&lt;/li&gt;
+&lt;li&gt;&lt;s&gt;&lt;strong&gt;Python and Excel Integration Using PyXll&lt;/strong&gt; (Tobie)&lt;/s&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Development of Account Software&lt;/strong&gt; (Frank)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Introduction to MongoDB in Python&lt;/strong&gt; (Walter)&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;More to follow... maybe.&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;RSVP: &lt;a href="http://www.meetup.com/Gauteng-Python-Users-Group/events/189529862/"&gt;Meetup page&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://jozihub.co.za"&gt;JoziHub&lt;/a&gt; is located at

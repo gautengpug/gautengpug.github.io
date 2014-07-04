@@ -62,18 +62,22 @@ required.
 The `yield` statement was introduced in Python 2.2. Assume a function that
 returns more than one result -
 
-    def fetch_rows(first, last):
-        rows = []
-        for row_no in range(first, last):
-            row = fetch_row(row_no)
-            rows.append(row)
-        return rows
+```python
+def fetch_rows(first, last):
+	rows = []
+	for row_no in range(first, last):
+		row = fetch_row(row_no)
+		rows.append(row)
+	return rows
+```
 
 The caller would do something like -
 
-    rows = fetch_rows(first, last)
-    for row in rows:
-        # do something
+```python
+rows = fetch_rows(first, last)
+for row in rows:
+	# do something
+```
 
 This works, but the caller has to wait until all rows are retrieved before
 continuing. In the first line, `fetch_rows()` returns a list, and the second
@@ -81,10 +85,12 @@ line iterates over the list.
 
 The `yield` statement allows the following -
 
-    def fetch_rows(first, last):
-        for row_no in range(first, last):
-            row = fetch_row(row_no)
-            yield row
+```python
+def fetch_rows(first, last):
+	for row_no in range(first, last):
+		row = fetch_row(row_no)
+		yield row
+```
 
 The caller looks the same as before, but the sequence of events is different.
 The `yield` statement turns the function into a generator. In the first line,
@@ -148,25 +154,27 @@ programs much easier to read and to write.
 
 Here is a simple example of an echo server -
 
-    import asyncio
+```python
+import asyncio
 
-    def accept_client(client_reader, client_writer):
-        task = asyncio.Task(
-            handle_client(client_reader, client_writer))
+def accept_client(client_reader, client_writer):
+	task = asyncio.Task(
+		handle_client(client_reader, client_writer))
 
-    @asyncio.coroutine
-    def handle_client(client_reader, client_writer):
-        while True:
-            data = yield from asyncio.wait_for(
-                client_reader.readline(), timeout=10.0)
-            client_writer.write(data))
-            if data.decode().rstrip() == 'BYE':
-                break
+@asyncio.coroutine
+def handle_client(client_reader, client_writer):
+	while True:
+		data = yield from asyncio.wait_for(
+			client_reader.readline(), timeout=10.0)
+		client_writer.write(data))
+		if data.decode().rstrip() == 'BYE':
+			break
 
-    loop = asyncio.get_event_loop()
-    server = asyncio.start_server(accept_client, host, port)
-    loop.run_until_complete(server)
-    loop.run_forever()
+loop = asyncio.get_event_loop()
+server = asyncio.start_server(accept_client, host, port)
+loop.run_until_complete(server)
+loop.run_forever()
+```
 
 For a fuller example, look at [Python AsyncIO - Streams - Client and
 Server](http://davebehnke.com/python-asyncio-streams-client-server.html).

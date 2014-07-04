@@ -48,6 +48,10 @@
                 </li>
             {% endif %}
 
+            {% include 'includes/links.html' %}
+            {% include 'includes/github.html' %}
+            {% include 'includes/twitter_timeline.html' %}
+
             {% if DISPLAY_TAGS_ON_SIDEBAR %}
                 {% if DISPLAY_TAGS_INLINE %}
                     {% set tags = tag_cloud | sort(attribute='0') %}
@@ -64,12 +68,8 @@
                         </li>
                     {% endfor %}
                     </ul>
-                </li>    
+                </li>
             {% endif %}
-            {% include 'includes/github.html' %}
-            {% include 'includes/twitter_timeline.html' %}
-            {% include 'includes/links.html' %}
-
         </ul>
     </section>
 

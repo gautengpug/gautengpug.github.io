@@ -162,19 +162,19 @@ there are some important differences. To explain them, a bit of history is
 required.</p>
 <p>The <code>yield</code> statement was introduced in Python 2.2. Assume a function that
 returns more than one result -</p>
-<div class="highlight"><pre><span class="n">def</span> <span class="n">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span><span class="o">:</span>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
     <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">row_no</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">for</span> <span class="n">row_no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
         <span class="n">row</span> <span class="o">=</span> <span class="n">fetch_row</span><span class="p">(</span><span class="n">row_no</span><span class="p">)</span>
-        <span class="n">rows</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">rows</span>
 </pre></div>
 
 
 <p>The caller would do something like -</p>
 <div class="highlight"><pre><span class="n">rows</span> <span class="o">=</span> <span class="n">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">row</span> <span class="n">in</span> <span class="n">rows</span><span class="o">:</span>
-    <span class="err">#</span> <span class="k">do</span> <span class="n">something</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="c"># do something</span>
 </pre></div>
 
 
@@ -182,10 +182,10 @@ returns more than one result -</p>
 continuing. In the first line, <code>fetch_rows()</code> returns a list, and the second
 line iterates over the list.</p>
 <p>The <code>yield</code> statement allows the following -</p>
-<div class="highlight"><pre><span class="n">def</span> <span class="n">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">for</span> <span class="n">row_no</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span><span class="o">:</span>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">row_no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
         <span class="n">row</span> <span class="o">=</span> <span class="n">fetch_row</span><span class="p">(</span><span class="n">row_no</span><span class="p">)</span>
-        <span class="n">yield</span> <span class="n">row</span>
+        <span class="k">yield</span> <span class="n">row</span>
 </pre></div>
 
 
@@ -256,25 +256,25 @@ to just call <code>yield from</code>, and your function is automatically suspend
 the condition is satisfied it continues from the next statement. This makes
 programs much easier to read and to write.</p>
 <p>Here is a simple example of an echo server -</p>
-<div class="highlight"><pre><span class="n">import</span> <span class="n">asyncio</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">asyncio</span>
 
-<span class="n">def</span> <span class="n">accept_client</span><span class="p">(</span><span class="n">client_reader</span><span class="p">,</span> <span class="n">client_writer</span><span class="p">)</span><span class="o">:</span>
-    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="p">.</span><span class="n">Task</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">accept_client</span><span class="p">(</span><span class="n">client_reader</span><span class="p">,</span> <span class="n">client_writer</span><span class="p">):</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span>
         <span class="n">handle_client</span><span class="p">(</span><span class="n">client_reader</span><span class="p">,</span> <span class="n">client_writer</span><span class="p">))</span>
 
-<span class="err">@</span><span class="n">asyncio</span><span class="p">.</span><span class="n">coroutine</span>
-<span class="n">def</span> <span class="n">handle_client</span><span class="p">(</span><span class="n">client_reader</span><span class="p">,</span> <span class="n">client_writer</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">while</span> <span class="n">True</span><span class="o">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">yield</span> <span class="n">from</span> <span class="n">asyncio</span><span class="p">.</span><span class="n">wait_for</span><span class="p">(</span>
-            <span class="n">client_reader</span><span class="p">.</span><span class="n">readline</span><span class="p">(),</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
-        <span class="n">client_writer</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">().</span><span class="n">rstrip</span><span class="p">()</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">BYE</span><span class="err">&#39;</span><span class="o">:</span>
+<span class="nd">@asyncio.coroutine</span>
+<span class="k">def</span> <span class="nf">handle_client</span><span class="p">(</span><span class="n">client_reader</span><span class="p">,</span> <span class="n">client_writer</span><span class="p">):</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="k">yield from</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span>
+            <span class="n">client_reader</span><span class="o">.</span><span class="n">readline</span><span class="p">(),</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+        <span class="n">client_writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;BYE&#39;</span><span class="p">:</span>
             <span class="k">break</span>
 
-<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="p">.</span><span class="n">get_event_loop</span><span class="p">()</span>
-<span class="n">server</span> <span class="o">=</span> <span class="n">asyncio</span><span class="p">.</span><span class="n">start_server</span><span class="p">(</span><span class="n">accept_client</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
-<span class="n">loop</span><span class="p">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">server</span><span class="p">)</span>
-<span class="n">loop</span><span class="p">.</span><span class="n">run_forever</span><span class="p">()</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">start_server</span><span class="p">(</span><span class="n">accept_client</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">server</span><span class="p">)</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">run_forever</span><span class="p">()</span>
 </pre></div>
 
 

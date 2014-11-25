@@ -30,8 +30,6 @@
     <link href="/theme/css/pygments/emacs.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
-        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Gauteng Python User Group ATOM Feed"/>
 
 </head>
 <body>
@@ -100,7 +98,7 @@ Gauteng Python User Group            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2014-05-16T02:00:00"> Fri 16 May 2014</time>
+        <i class="fa fa-calendar"></i><time datetime="2014-05-16T02:00:00+02:00"> Fri 16 May 2014</time>
     </span>
 
         <span class="label label-default">Category</span>
@@ -121,19 +119,19 @@ Gauteng Python User Group            </a>
 <p>Although I understand that the project is deprecated, I'm sure it will be very useful to all of you, especially if you are doing multiple things on different python versions.</p>
 <p>This installation is leaning towards the *nix users in our group. This installation guide should work with most linux flavours (with a couple of shell-command changes if required) and possibly with OSX too (Apple guys).</p>
 <p>Go ahead and open a terminal/shell-command and type this:</p>
-<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">kL</span> <span class="n">http</span><span class="o">:</span><span class="c1">//xrl.us/pythonbrewinstall | bash</span>
+<div class="highlight"><pre>curl -kL http://xrl.us/pythonbrewinstall | bash
 </pre></div>
 
 
 <p>You will find a .pythonbrew folder (most likely in your $USER).</p>
 <p>Within the same directory .pythonbrew is, look for a .bashrc file. Open this file and at the end of the file, type this:</p>
-<div class="highlight"><pre><span class="p">[[</span> <span class="o">-</span><span class="n">s</span> <span class="err">$</span><span class="n">HOME</span><span class="o">/</span><span class="p">.</span><span class="n">pythonbrew</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">bashrc</span> <span class="p">]]</span> <span class="o">&amp;&amp;</span> <span class="n">source</span> <span class="err">$</span><span class="n">HOME</span><span class="o">/</span><span class="p">.</span><span class="n">pythonbrew</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">bashrc</span>
+<div class="highlight"><pre><span class="x">[[ -s </span><span class="p">$</span><span class="nv">HOME</span><span class="x">/.pythonbrew/etc/bashrc ]] &amp;&amp; source </span><span class="p">$</span><span class="nv">HOME</span><span class="x">/.pythonbrew/etc/bashrc</span>
 </pre></div>
 
 
 <p>This command worked for me (on an old install). You could also try changing HOME to the name of the USER.</p>
 <p>So for example, if your username on your system is "Jonny", the line above will look like this:</p>
-<div class="highlight"><pre><span class="p">[[</span> <span class="o">-</span><span class="n">s</span> <span class="err">$</span><span class="n">Jonny</span><span class="o">/</span><span class="p">.</span><span class="n">pythonbrew</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">bashrc</span> <span class="p">]]</span> <span class="o">&amp;&amp;</span> <span class="n">source</span> <span class="err">$</span><span class="n">Jonny</span><span class="o">/</span><span class="p">.</span><span class="n">pythonbrew</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">bashrc</span>
+<div class="highlight"><pre><span class="x">[[ -s </span><span class="p">$</span><span class="nv">Jonny</span><span class="x">/.pythonbrew/etc/bashrc ]] &amp;&amp; source </span><span class="p">$</span><span class="nv">Jonny</span><span class="x">/.pythonbrew/etc/bashrc</span>
 </pre></div>
 
 
@@ -151,13 +149,13 @@ Gauteng Python User Group            </a>
 
 <p>Start a fresh terminal/shell.</p>
 <p>Now it's time to install pythonbrew with pip included. Just run this command:</p>
-<div class="highlight"><pre><span class="n">pythonbrew</span> <span class="n">install</span> <span class="o">--</span><span class="n">configure</span><span class="o">=</span><span class="s">&quot;--with-zlib&quot;</span> <span class="mf">2.7.6</span>
+<div class="highlight"><pre>pythonbrew install --configure=&quot;--with-zlib&quot; 2.7.6
 </pre></div>
 
 
 <p>This will take a while (unless you're using a 10MB/s or faster connection) so you can chill as it fetches 2.7.6 and installs it.</p>
 <p>If the install is a success, you can close the current terminal and open a fresh one. Then type this:</p>
-<div class="highlight"><pre><span class="n">pythonbrew</span> <span class="k">switch</span> <span class="mf">2.7.6</span>
+<div class="highlight"><pre>pythonbrew switch 2.7.6
 </pre></div>
 
 
@@ -165,15 +163,15 @@ Gauteng Python User Group            </a>
 <p>Phewww!!! We're almost there!</p>
 <p>Let's now create a virtual environment...</p>
 <p>Type this in the terminal:</p>
-<div class="highlight"><pre><span class="n">pythonbrew</span> <span class="n">venv</span> <span class="n">init</span>
-<span class="n">pythonbrew</span> <span class="n">venv</span> <span class="n">create</span> <span class="n">gpug</span>
+<div class="highlight"><pre>pythonbrew venv init
+pythonbrew venv create gpug
 </pre></div>
 
 
 <p>You can then go ahead and install anything you like in this virtual environment. If you'd like to try out our site-blog, you can do this:</p>
-<div class="highlight"><pre><span class="n">pythonbrew</span> <span class="n">venv</span> <span class="n">use</span> <span class="n">gpug</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">markdown</span>
+<div class="highlight"><pre>pythonbrew venv use gpug
+pip install pelican
+pip install markdown
 </pre></div>
 
 
@@ -228,17 +226,17 @@ Gauteng Python User Group            </a>
                                 accounting
                             </a>
                         </li>
-                        <li class="list-group-item tag-2">
+                        <li class="list-group-item tag-3">
                             <a href="/tag/asyncio.html">
                                 asyncio
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="/tag/decorators.html">
-                                decorators
+                            <a href="/tag/flask.html">
+                                flask
                             </a>
                         </li>
-                        <li class="list-group-item tag-2">
+                        <li class="list-group-item tag-3">
                             <a href="/tag/ipython.html">
                                 ipython
                             </a>
@@ -248,9 +246,14 @@ Gauteng Python User Group            </a>
                                 meetup
                             </a>
                         </li>
-                        <li class="list-group-item tag-2">
+                        <li class="list-group-item tag-3">
                             <a href="/tag/mongodb.html">
                                 mongodb
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="/tag/nim.html">
+                                Nim
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -263,7 +266,7 @@ Gauteng Python User Group            </a>
                                 postgres
                             </a>
                         </li>
-                        <li class="list-group-item tag-2">
+                        <li class="list-group-item tag-3">
                             <a href="/tag/pythonbrew.html">
                                 pythonbrew
                             </a>

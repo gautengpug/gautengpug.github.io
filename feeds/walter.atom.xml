@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Gauteng Python User Group</title><link href="/" rel="alternate"></link><link href="/feeds/walter.atom.xml" rel="self"></link><id>/</id><updated>2014-07-04T22:50:00+02:00</updated><entry><title>Meetup: July 2014</title><link href="/meetup-july-2014.html" rel="alternate"></link><updated>2014-07-04T22:50:00+02:00</updated><author><name>Walter</name></author><id>tag:,2014-07-04:meetup-july-2014.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;meetup&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Meetup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                    &lt;span class="n"&gt;duration&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hours&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;minutes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                    &lt;span class="n"&gt;venue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;gauteng&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;joburg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;JoziHub&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href="http://www.meetup.com/Gauteng-Python-Users-Group/events/193043692/" class="btn btn-success"&gt;&lt;i class="fa fa-check-square"&gt;&lt;/i&gt; RSVP&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This will be our fourth monthly meetup. The talks will be short, and are meant
+to be conversation starters. Should you not be available for the entire meetup,
+you are welcome to come say hi and leave early.&lt;/p&gt;
+&lt;p&gt;The following talks will be presented:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Using PL/Python in PostgreSQL&lt;/strong&gt; (Corrie)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Testing in Python&lt;/strong&gt; (Iwan)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="http://jozihub.co.za"&gt;JoziHub&lt;/a&gt; is located at
+&lt;a href="http://www.openstreetmap.org/way/162961866#map=18/-26.18514/28.01931"&gt;44 Stanley Ave in Millpark&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Any questions or comments are welcome in the
+Google Groups &lt;a href="https://groups.google.com/d/topic/gpugsa/_PwadQSb2VU/discussion"&gt;discussion thread&lt;/a&gt;.&lt;/p&gt;</summary><category term="2014"></category><category term="meetup"></category><category term="talks"></category><category term="postgres"></category><category term="testing"></category></entry><entry><title>Meetup Feedback: June 2014</title><link href="/meetup-feedback-june-2014.html" rel="alternate"></link><updated>2014-07-02T13:00:00+02:00</updated><author><name>Walter</name></author><id>tag:,2014-07-02:meetup-feedback-june-2014.html</id><summary type="html">&lt;p&gt;The meetup was hosted at &lt;a href="http://jozihub.co.za"&gt;JoziHub&lt;/a&gt; on 28 June 2014,
+09:00. There was a total of 7 attendees, of which 3 were newcomers.&lt;/p&gt;
+&lt;h2&gt;Discussions&lt;/h2&gt;
+&lt;p&gt;We started off with informal introductions and a discussion on the purpose of
+GPUG. This discussion was continued on our
+&lt;a href="https://groups.google.com/d/topic/gpugsa/siOAqwrp-7M"&gt;forums&lt;/a&gt;. During the rest
+of these discussions, it came to light that all of our newcomers learned of the
+meetup via our &lt;a href="http://www.meetup.com/Gauteng-Python-Users-Group/"&gt;Meetup.com&lt;/a&gt;
+page and were unaware of this site and our Google Group. It is clear that we
+need to increase the visibility of these other resources.&lt;/p&gt;
+&lt;p&gt;Frank was scheduled to present a talk on his accounting software, but a power
+outage prevented him from doing so. In stead, he shared his experience with
+Python 3.4's &lt;code&gt;asyncio&lt;/code&gt; module and subsequently did a
+&lt;a href="/introduction-to-asyncio.html"&gt;writeup&lt;/a&gt; on the topic.&lt;/p&gt;
+&lt;p&gt;Walter presented an introduction to MongoDB, &lt;code&gt;pymongo&lt;/code&gt; and MongoEngine. The
+IPython notebook and slides were committed to our
+&lt;a href="https://github.com/gautengpug/talks/tree/master/2014/june_meetup/pymongo_intro"&gt;talks repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Based on the pursuant discussions, Corrie's experience with PL/Python in
+PostgreSQL and Iwan's testing experience was identified as valuable topics for
+future talks.&lt;/p&gt;
+&lt;p&gt;The meetup adjourned at about 12:30. Thanks to all attendees, and to JoziHub
+for providing the venue.&lt;/p&gt;</summary><category term="2014"></category><category term="meetup"></category><category term="talks"></category><category term="mongodb"></category><category term="asyncio"></category></entry><entry><title>Meetup: June 2014</title><link href="/meetup-june-2014.html" rel="alternate"></link><updated>2014-06-17T21:47:00+02:00</updated><author><name>Walter</name></author><id>tag:,2014-06-17:meetup-june-2014.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;meetup&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Meetup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                    &lt;span class="n"&gt;duration&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hours&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                    &lt;span class="n"&gt;venue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;gauteng&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;joburg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;JoziHub&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will be our third monthly meetup. The following talks will be presented:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;s&gt;&lt;strong&gt;Python and Excel Integration Using PyXll&lt;/strong&gt; (Tobie)&lt;/s&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Development of Account Software&lt;/strong&gt; (Frank)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Introduction to MongoDB in Python&lt;/strong&gt; (Walter)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;RSVP: &lt;a href="http://www.meetup.com/Gauteng-Python-Users-Group/events/189529862/"&gt;Meetup page&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://jozihub.co.za"&gt;JoziHub&lt;/a&gt; is located at
+&lt;a href="http://www.openstreetmap.org/way/162961866#map=18/-26.18514/28.01931"&gt;44 Stanley Ave in Millpark&lt;/a&gt;.
+We have the venue until 14:00, but we might not go on that long.&lt;/p&gt;
+&lt;p&gt;Feel free to discuss or ask questions on the relevant
+&lt;a href="https://groups.google.com/forum/?hl=en-GB#!topic/gpugsa/ui0o6YcJj1I"&gt;Google Groups page&lt;/a&gt;.&lt;/p&gt;</summary><category term="2014"></category><category term="meetup"></category><category term="talks"></category><category term="mongodb"></category><category term="pyxll"></category></entry></feed>

@@ -1,28 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gauteng Python User Group</title><link>/</link><description></description><atom:link href="/feeds/hussain.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 25 Nov 2014 21:00:00 +0200</lastBuildDate><item><title>Meetup: November 2014</title><link>/meetup-november-2014.html</link><description>&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;meetup&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Meetup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-                    &lt;span class="n"&gt;duration&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hours&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;minutes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-                    &lt;span class="n"&gt;venue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;gauteng&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;joburg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;JoziHub&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;a href="http://www.meetup.com/Gauteng-Python-Users-Group/events/218665868/" class="btn btn-success"&gt;&lt;i class="fa fa-check-square"&gt;&lt;/i&gt; RSVP&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;This will be our final meetup for 2014.&lt;/p&gt;
-&lt;p&gt;Due to this being the final meetup and also a celebration of us hitting the 100 member milestone in a few short months, the program is slightly longer.&lt;/p&gt;
-&lt;p&gt;The talk/s will be short, and are meant to be conversation starters. Should you not be available for the entire meetup, you are welcome to come say hi and leave early.&lt;/p&gt;
-&lt;p&gt;The following talks/activities will be presented/happening:&lt;/p&gt;
-&lt;p&gt;•  Tour of JoziHub/44 on Stanley (Sam Manclark)&lt;/p&gt;
-&lt;p&gt;• Rapid Intro to Flask (Adam)&lt;/p&gt;
-&lt;p&gt;• General Intro to Nim (Hussain)&lt;/p&gt;
-&lt;p&gt;• #Interesting talk 3 (members encouraged to get in touch with organizers if you'd like to present anything)&lt;/p&gt;
-&lt;p&gt;• Lunch break (if anyone wants to)&lt;/p&gt;
-&lt;p&gt;Other(meta) activities:&lt;/p&gt;
-&lt;p&gt;• Product demos (Great place to kick-start your startup/side-project, so share your project with us)&lt;/p&gt;
-&lt;p&gt;• Troubleshooting (think of it as a "live" version of StackOverflow)&lt;/p&gt;
-&lt;p&gt;• Networking/ideas/open-source/startups/python-careers&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://jozihub.co.za"&gt;JoziHub&lt;/a&gt; is located at
-&lt;a href="http://www.openstreetmap.org/way/162961866#map=18/-26.18514/28.01931"&gt;44 Stanley Ave in Millpark&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Any questions or comments are welcome in the
-Google Groups &lt;a href="https://groups.google.com/d/topic/gpugsa/_PwadQSb2VU/discussion"&gt;discussion thread&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Hussain</dc:creator><pubDate>Tue, 25 Nov 2014 21:00:00 +0200</pubDate><guid>tag:,2014-11-25:meetup-november-2014.html</guid><category>2014</category><category>meetup</category><category>talks</category><category>flask</category><category>Nim</category></item><item><title>2nd Meetup: May 2014</title><link>/2nd-meetup-may-2014.html</link><description>&lt;p&gt;Our second meetup was held on 17 May at the House4Hack.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gauteng Python User Group</title><link>/</link><description></description><atom:link href="/feeds/hussain.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 31 May 2014 13:00:00 +0200</lastBuildDate><item><title>2nd Meetup: May 2014</title><link>/2nd-meetup-may-2014.html</link><description>&lt;p&gt;Our second meetup was held on 17 May at the House4Hack.&lt;/p&gt;
 &lt;p&gt;We were expecting an attendance of 5 confirmed pythonistas, with any others that aren't that familiar with our group yet, to come through as well.&lt;/p&gt;
 &lt;p&gt;Unfortunately 2 members couldn't make it, so we were 3 pythonistas, with Gert being the *wildcard attendee (this proved to be an insightful activity, as Gert shared some interesting knowledge with us, but more on that later).&lt;/p&gt;
 &lt;h3&gt;We had 3 presentations (+ informal discussion) conducted on the day. These were:&lt;/h3&gt;
@@ -67,26 +44,26 @@ Location/Venue and time will be decided (with location most likely shifting to J
 &lt;p&gt;Although I understand that the project is deprecated, I'm sure it will be very useful to all of you, especially if you are doing multiple things on different python versions.&lt;/p&gt;
 &lt;p&gt;This installation is leaning towards the *nix users in our group. This installation guide should work with most linux flavours (with a couple of shell-command changes if required) and possibly with OSX too (Apple guys).&lt;/p&gt;
 &lt;p&gt;Go ahead and open a terminal/shell-command and type this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;curl -kL http://xrl.us/pythonbrewinstall | bash
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -kL http://xrl.us/pythonbrewinstall | bash
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;You will find a .pythonbrew folder (most likely in your $USER).&lt;/p&gt;
 &lt;p&gt;Within the same directory .pythonbrew is, look for a .bashrc file. Open this file and at the end of the file, type this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;[[ -s &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="x"&gt;/.pythonbrew/etc/bashrc ]] &amp;amp;&amp;amp; source &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="x"&gt;/.pythonbrew/etc/bashrc&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;[[ -s &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="x"&gt;/.pythonbrew/etc/bashrc ]] &amp;amp;&amp;amp; source &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="x"&gt;/.pythonbrew/etc/bashrc&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;This command worked for me (on an old install). You could also try changing HOME to the name of the USER.&lt;/p&gt;
 &lt;p&gt;So for example, if your username on your system is "Jonny", the line above will look like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;[[ -s &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;Jonny&lt;/span&gt;&lt;span class="x"&gt;/.pythonbrew/etc/bashrc ]] &amp;amp;&amp;amp; source &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;Jonny&lt;/span&gt;&lt;span class="x"&gt;/.pythonbrew/etc/bashrc&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;[[ -s &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;Jonny&lt;/span&gt;&lt;span class="x"&gt;/.pythonbrew/etc/bashrc ]] &amp;amp;&amp;amp; source &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;Jonny&lt;/span&gt;&lt;span class="x"&gt;/.pythonbrew/etc/bashrc&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Let's add the latest Python 2.7 to the list of Pythons...&lt;/p&gt;
 &lt;p&gt;Go to this file: pythonbrew/etc/config.cfg&lt;/p&gt;
 &lt;p&gt;Open this file and go to line 170-175. You should see 2.7.5 as the last 2.7 version. Add this code and this is how it will look:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[Python-2.7.5]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[Python-2.7.5]&lt;/span&gt;
 &lt;span class="na"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tgz&lt;/span&gt;
 
 &lt;span class="k"&gt;[Python-2.7.6]&lt;/span&gt;
@@ -97,13 +74,13 @@ Location/Venue and time will be decided (with location most likely shifting to J
 
 &lt;p&gt;Start a fresh terminal/shell.&lt;/p&gt;
 &lt;p&gt;Now it's time to install pythonbrew with pip included. Just run this command:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pythonbrew install --configure=&amp;quot;--with-zlib&amp;quot; 2.7.6
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pythonbrew install --configure=&amp;quot;--with-zlib&amp;quot; 2.7.6
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;This will take a while (unless you're using a 10MB/s or faster connection) so you can chill as it fetches 2.7.6 and installs it.&lt;/p&gt;
 &lt;p&gt;If the install is a success, you can close the current terminal and open a fresh one. Then type this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pythonbrew switch 2.7.6
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pythonbrew switch 2.7.6
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -111,13 +88,13 @@ Location/Venue and time will be decided (with location most likely shifting to J
 &lt;p&gt;Phewww!!! We're almost there!&lt;/p&gt;
 &lt;p&gt;Let's now create a virtual environment...&lt;/p&gt;
 &lt;p&gt;Type this in the terminal:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pythonbrew venv init
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pythonbrew venv init
 pythonbrew venv create gpug
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;You can then go ahead and install anything you like in this virtual environment. If you'd like to try out our site-blog, you can do this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pythonbrew venv use gpug
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pythonbrew venv use gpug
 pip install pelican
 pip install markdown
 &lt;/pre&gt;&lt;/div&gt;

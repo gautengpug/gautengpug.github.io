@@ -119,26 +119,26 @@ Gauteng Python User Group            </a>
 <p>Although I understand that the project is deprecated, I'm sure it will be very useful to all of you, especially if you are doing multiple things on different python versions.</p>
 <p>This installation is leaning towards the *nix users in our group. This installation guide should work with most linux flavours (with a couple of shell-command changes if required) and possibly with OSX too (Apple guys).</p>
 <p>Go ahead and open a terminal/shell-command and type this:</p>
-<div class="highlight"><pre>curl -kL http://xrl.us/pythonbrewinstall | bash
+<div class="highlight"><pre><span></span>curl -kL http://xrl.us/pythonbrewinstall | bash
 </pre></div>
 
 
 <p>You will find a .pythonbrew folder (most likely in your $USER).</p>
 <p>Within the same directory .pythonbrew is, look for a .bashrc file. Open this file and at the end of the file, type this:</p>
-<div class="highlight"><pre><span class="x">[[ -s </span><span class="p">$</span><span class="nv">HOME</span><span class="x">/.pythonbrew/etc/bashrc ]] &amp;&amp; source </span><span class="p">$</span><span class="nv">HOME</span><span class="x">/.pythonbrew/etc/bashrc</span>
+<div class="highlight"><pre><span></span><span class="x">[[ -s </span><span class="p">$</span><span class="nv">HOME</span><span class="x">/.pythonbrew/etc/bashrc ]] &amp;&amp; source </span><span class="p">$</span><span class="nv">HOME</span><span class="x">/.pythonbrew/etc/bashrc</span>
 </pre></div>
 
 
 <p>This command worked for me (on an old install). You could also try changing HOME to the name of the USER.</p>
 <p>So for example, if your username on your system is "Jonny", the line above will look like this:</p>
-<div class="highlight"><pre><span class="x">[[ -s </span><span class="p">$</span><span class="nv">Jonny</span><span class="x">/.pythonbrew/etc/bashrc ]] &amp;&amp; source </span><span class="p">$</span><span class="nv">Jonny</span><span class="x">/.pythonbrew/etc/bashrc</span>
+<div class="highlight"><pre><span></span><span class="x">[[ -s </span><span class="p">$</span><span class="nv">Jonny</span><span class="x">/.pythonbrew/etc/bashrc ]] &amp;&amp; source </span><span class="p">$</span><span class="nv">Jonny</span><span class="x">/.pythonbrew/etc/bashrc</span>
 </pre></div>
 
 
 <p>Let's add the latest Python 2.7 to the list of Pythons...</p>
 <p>Go to this file: pythonbrew/etc/config.cfg</p>
 <p>Open this file and go to line 170-175. You should see 2.7.5 as the last 2.7 version. Add this code and this is how it will look:</p>
-<div class="highlight"><pre><span class="k">[Python-2.7.5]</span>
+<div class="highlight"><pre><span></span><span class="k">[Python-2.7.5]</span>
 <span class="na">url</span> <span class="o">=</span> <span class="s">http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tgz</span>
 
 <span class="k">[Python-2.7.6]</span>
@@ -149,13 +149,13 @@ Gauteng Python User Group            </a>
 
 <p>Start a fresh terminal/shell.</p>
 <p>Now it's time to install pythonbrew with pip included. Just run this command:</p>
-<div class="highlight"><pre>pythonbrew install --configure=&quot;--with-zlib&quot; 2.7.6
+<div class="highlight"><pre><span></span>pythonbrew install --configure=&quot;--with-zlib&quot; 2.7.6
 </pre></div>
 
 
 <p>This will take a while (unless you're using a 10MB/s or faster connection) so you can chill as it fetches 2.7.6 and installs it.</p>
 <p>If the install is a success, you can close the current terminal and open a fresh one. Then type this:</p>
-<div class="highlight"><pre>pythonbrew switch 2.7.6
+<div class="highlight"><pre><span></span>pythonbrew switch 2.7.6
 </pre></div>
 
 
@@ -163,13 +163,13 @@ Gauteng Python User Group            </a>
 <p>Phewww!!! We're almost there!</p>
 <p>Let's now create a virtual environment...</p>
 <p>Type this in the terminal:</p>
-<div class="highlight"><pre>pythonbrew venv init
+<div class="highlight"><pre><span></span>pythonbrew venv init
 pythonbrew venv create gpug
 </pre></div>
 
 
 <p>You can then go ahead and install anything you like in this virtual environment. If you'd like to try out our site-blog, you can do this:</p>
-<div class="highlight"><pre>pythonbrew venv use gpug
+<div class="highlight"><pre><span></span>pythonbrew venv use gpug
 pip install pelican
 pip install markdown
 </pre></div>
@@ -191,7 +191,7 @@ pip install markdown
         <ul class="list-group list-group-flush">
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
                   <ul class="list-group" id="social">
-                    <li class="list-group-item"><a href="http://github.com/gautengpug"><i
+                    <li class="list-group-item"><a href="https://github.com/gautengpug"><i
                             class="fa fa-github-square fa-lg"></i> github
                     </a></li>
                   </ul>
@@ -207,7 +207,7 @@ pip install markdown
             </a>
         </li>
         <li class="list-group-item">
-            <a href="http://www.meetup.com/Gauteng-Python-Users-Group/" target="_blank">
+            <a href="https://www.meetup.com/Gauteng-Python-Users-Group/" target="_blank">
                 Meetup Group
             </a>
         </li>
@@ -216,81 +216,6 @@ pip install markdown
 
                 <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                     <ul class="list-group list-inline tagcloud" id="tags">
-                        <li class="list-group-item tag-1">
-                            <a href="/tag/2014.html">
-                                2014
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/accounting.html">
-                                accounting
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-3">
-                            <a href="/tag/asyncio.html">
-                                asyncio
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/flask.html">
-                                flask
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-3">
-                            <a href="/tag/ipython.html">
-                                ipython
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-1">
-                            <a href="/tag/meetup.html">
-                                meetup
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-3">
-                            <a href="/tag/mongodb.html">
-                                mongodb
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/nim.html">
-                                Nim
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/portia.html">
-                                portia
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/postgres.html">
-                                postgres
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-3">
-                            <a href="/tag/pythonbrew.html">
-                                pythonbrew
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/pyxll.html">
-                                pyxll
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/reahl.html">
-                                reahl
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-1">
-                            <a href="/tag/talks.html">
-                                talks
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/testing.html">
-                                testing
-                            </a>
-                        </li>
                     </ul>
                 </li>
         </ul>

@@ -160,7 +160,7 @@ there are some important differences. To explain them, a bit of history is
 required.</p>
 <p>The <code>yield</code> statement was introduced in Python 2.2. Assume a function that
 returns more than one result -</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
     <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">row_no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
         <span class="n">row</span> <span class="o">=</span> <span class="n">fetch_row</span><span class="p">(</span><span class="n">row_no</span><span class="p">)</span>
@@ -170,9 +170,9 @@ returns more than one result -</p>
 
 
 <p>The caller would do something like -</p>
-<div class="highlight"><pre><span class="n">rows</span> <span class="o">=</span> <span class="n">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
-    <span class="c"># do something</span>
+    <span class="c1"># do something</span>
 </pre></div>
 
 
@@ -180,7 +180,7 @@ returns more than one result -</p>
 continuing. In the first line, <code>fetch_rows()</code> returns a list, and the second
 line iterates over the list.</p>
 <p>The <code>yield</code> statement allows the following -</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">row_no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
         <span class="n">row</span> <span class="o">=</span> <span class="n">fetch_row</span><span class="p">(</span><span class="n">row_no</span><span class="p">)</span>
         <span class="k">yield</span> <span class="n">row</span>
@@ -254,7 +254,7 @@ to just call <code>yield from</code>, and your function is automatically suspend
 the condition is satisfied it continues from the next statement. This makes
 programs much easier to read and to write.</p>
 <p>Here is a simple example of an echo server -</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">asyncio</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
 
 <span class="k">def</span> <span class="nf">accept_client</span><span class="p">(</span><span class="n">client_reader</span><span class="p">,</span> <span class="n">client_writer</span><span class="p">):</span>
     <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span>
@@ -266,7 +266,7 @@ programs much easier to read and to write.</p>
         <span class="n">data</span> <span class="o">=</span> <span class="k">yield from</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span>
             <span class="n">client_reader</span><span class="o">.</span><span class="n">readline</span><span class="p">(),</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
         <span class="n">client_writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;BYE&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;BYE&#39;</span><span class="p">:</span>
             <span class="k">break</span>
 
 <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
@@ -307,7 +307,7 @@ decorator you can see above to each function, and then invoke it by using
         <ul class="list-group list-group-flush">
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
                   <ul class="list-group" id="social">
-                    <li class="list-group-item"><a href="http://github.com/gautengpug"><i
+                    <li class="list-group-item"><a href="https://github.com/gautengpug"><i
                             class="fa fa-github-square fa-lg"></i> github
                     </a></li>
                   </ul>
@@ -323,7 +323,7 @@ decorator you can see above to each function, and then invoke it by using
             </a>
         </li>
         <li class="list-group-item">
-            <a href="http://www.meetup.com/Gauteng-Python-Users-Group/" target="_blank">
+            <a href="https://www.meetup.com/Gauteng-Python-Users-Group/" target="_blank">
                 Meetup Group
             </a>
         </li>
@@ -332,81 +332,6 @@ decorator you can see above to each function, and then invoke it by using
 
                 <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                     <ul class="list-group list-inline tagcloud" id="tags">
-                        <li class="list-group-item tag-1">
-                            <a href="/tag/2014.html">
-                                2014
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/accounting.html">
-                                accounting
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-3">
-                            <a href="/tag/asyncio.html">
-                                asyncio
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/flask.html">
-                                flask
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-3">
-                            <a href="/tag/ipython.html">
-                                ipython
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-1">
-                            <a href="/tag/meetup.html">
-                                meetup
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-3">
-                            <a href="/tag/mongodb.html">
-                                mongodb
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/nim.html">
-                                Nim
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/portia.html">
-                                portia
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/postgres.html">
-                                postgres
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-3">
-                            <a href="/tag/pythonbrew.html">
-                                pythonbrew
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/pyxll.html">
-                                pyxll
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/reahl.html">
-                                reahl
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-1">
-                            <a href="/tag/talks.html">
-                                talks
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="/tag/testing.html">
-                                testing
-                            </a>
-                        </li>
                     </ul>
                 </li>
         </ul>

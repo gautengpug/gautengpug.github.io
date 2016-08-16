@@ -1,6 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+import time
+import datetime
+
+PLUGINS = [
+    # all other plugins
+    'next_meetup',
+]
 
 AUTHOR = u'Gauteng Python User Group'
 SITENAME = u'Gauteng Python User Group'
@@ -17,10 +24,10 @@ TRANSLATION_FEED_ATOM = None
 
 # Blogroll
 LINKS =  (('Google Group', 'https://groups.google.com/forum/#!forum/gpugsa'),
-          ('Meetup Group', 'http://www.meetup.com/Gauteng-Python-Users-Group/'),)
+          ('Meetup Group', 'https://www.meetup.com/Gauteng-Python-Users-Group/'),)
 
 # Social widget
-SOCIAL = (('github', 'http://github.com/gautengpug'),)
+SOCIAL = (('github', 'https://github.com/gautengpug'),)
 
 DEFAULT_PAGINATION = False
 
@@ -51,3 +58,14 @@ TAG_URL = 'tag/{slug}.html'
 SHOW_ANNOUNCEMENT_ON_HOME = True
 ANNOUNCEMENT_PREFIX = '<i class="fa fa-bullhorn"></i> NEXT MEETUP: '
 EMBED_PAGES_IN_HOME = True
+
+MEETUP_URL = 'Gauteng-Python-Users-Group'
+
+def to_date(timestamp):
+	return datetime.datetime.fromtimestamp(timestamp/1000)
+
+
+JINJA_FILTERS = {
+	'localtime': time.localtime, #unneeded but left for prettyfing purposes, in case more filters are required in future
+	'to_date': to_date,
+}

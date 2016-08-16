@@ -6,7 +6,10 @@
             {% if ann %}
                 <div class="alert alert-success">
                     <h2 class="text-center">
-                        <a href="{{ SITEURL }}/{{ ann.url }}">{{ ANNOUNCEMENT_PREFIX|default('') }}{{ ann.announcement_text }}</a>
+                        <p>{{ ANNOUNCEMENT_PREFIX|default('') }}</p>
+                    </h2>
+                    <h2 class="text-center">
+                        <a href="{{ next_meetup.url }}">{{ next_meetup.time|to_date|strftime('%Y-%m-%d %H:%M:%S') }}</a>
                     </h2>
                 </div>
             {% endif %}

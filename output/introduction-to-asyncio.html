@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Introduction to asyncio - Gauteng Python User Group</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="Gauteng Python User Group" />
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Introduction to asyncio"/>
+            <meta property="og:url" content="/introduction-to-asyncio.html"/>
+            <meta property="og:description" content="An introductory writeup about Python 3.4&#39;s new asyncio module."/>
+            <meta property="article:published_time" content="2014-06-29" />
+                <meta property="article:section" content="Blog" />
+                <meta property="article:tag" content="2014" />
+                <meta property="article:tag" content="asyncio" />
+                <meta property="article:author" content="Frank Millman" />
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.spacelab.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/emacs.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Gauteng Python User Group            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="/pages/about.html">
+                             About
+                          </a></li>
+                         <li><a href="/">
+                             Home
+                          </a></li>
+                         <li><a href="/pages/talk-ideas.html">
+                             Talk Ideas
+                          </a></li>
+                        <li class="active">
+                            <a href="/category/blog.html">Blog</a>
+                        </li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href="" title="Gauteng Python User Group"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="/category/blog.html" title="Blog">Blog</a></li>
+                <li class="active">Introduction to asyncio</li>
+            </ol>
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/introduction-to-asyncio.html"
+                       rel="bookmark"
+                       title="Permalink to Introduction to asyncio">
+                        Introduction to asyncio
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-06-29T12:18:00+02:00"> Sun 29 June 2014</time>
+    </span>
+
+        <span class="label label-default">Category</span>
+        <a href="/category/blog.html">Blog</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/2014.html">2014</a>
+        /
+	<a href="/tag/asyncio.html">asyncio</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h1>Introduction to <code>asyncio</code></h1>
+<blockquote>
+<p>-- <cite>Frank Millman</cite></p>
+</blockquote>
+<p>If you are writing a server program to handle multiple concurrent connections,
+how do you allow the connections to be handled simultaneously without blocking?
+There are two main approaches.</p>
+<p>The traditional approach uses threads. The main thread runs an endless loop
+listening for incoming connections. For each connection received, it creates a
+separate thread to handle the connection, and resumes listening. The secondary
+thread reads data from the socket and handles it as required, until one side or
+the other closes the connection. It runs independently of any other thread, so
+it does not have to worry about blocking. It works, but it has two main
+disadvantages. Firstly, the operating system limits the number of threads
+allowed, so it limits the number of concurrent connections achievable.
+Secondly, the operating system switches control between threads arbitrarily,
+and the programmer has no control over this. This can lead to subtle bugs,
+especially if any state is shared between the threads. This can be managed with
+the use of locks and other mechanisms, but if you get it wrong it can be very
+hard to debug.</p>
+<p>An alternative approach is to use asynchronous I/O. The most popular one in
+Python has for some years been a 3rd-party package called
+<a href="https://twistedmatrix.com/">Twisted</a>. It also uses an endless loop to listen
+for incoming connections, but when one is received it passes control directly
+to a request handler within the main thread. The handler reads the data from
+the socket, and then handles it up to a point where it might block. At that
+point it must do three things. It must define some condition indicating what it
+is waiting, it must specify a function to be called when that condition is
+satisfied, and it must return, which passes control back to the main loop. In
+addition to listening for incoming connections, the main loop also checks all
+outstanding conditions. If it finds one that is satisfied, it calls the
+specified function so that the handler can continue with its processing. It
+sounds complicated, but in practice the majority of current connections are in
+a blocked state, so it can handle many connections simultaneously without a
+problem. This approach has two main advantages. Firstly, there is no physical
+limit to the number of concurrent connections allowed, and many thousands have
+been successfully achieved.  Secondly, it is up to each handler to decide when
+to relinquish control, so it is easier for handlers to share data safely
+without the need for locks.  However, there is a disadvantage - if a handler
+does not relinquish control when it is supposed to, the result is that the main
+loop cannot continue, and the entire program will appear to have frozen.
+Handling this correctly is a skill that comes with experience.</p>
+<p>Python has now introduced its own asynchronous I/O capability. It is called
+<a href="https://docs.python.org/3.4/library/asyncio.html">asyncio</a>, and it is included
+in release 3.4. It is similar to the Twisted approach described above, but
+there are some important differences. To explain them, a bit of history is
+required.</p>
+<p>The <code>yield</code> statement was introduced in Python 2.2. Assume a function that
+returns more than one result -</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">row_no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">fetch_row</span><span class="p">(</span><span class="n">row_no</span><span class="p">)</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rows</span>
+</pre></div>
+
+
+<p>The caller would do something like -</p>
+<div class="highlight"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="c1"># do something</span>
+</pre></div>
+
+
+<p>This works, but the caller has to wait until all rows are retrieved before
+continuing. In the first line, <code>fetch_rows()</code> returns a list, and the second
+line iterates over the list.</p>
+<p>The <code>yield</code> statement allows the following -</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fetch_rows</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">row_no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">fetch_row</span><span class="p">(</span><span class="n">row_no</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">row</span>
+</pre></div>
+
+
+<p>The caller looks the same as before, but the sequence of events is different.
+The <code>yield</code> statement turns the function into a generator. In the first line,
+<code>fetch_rows()</code> returns a <em>generator object</em>. No lines in <code>fetch_rows()</code> are
+executed yet. The second line iterates over the generator. For the first
+iteration, <code>fetch_rows()</code> is executed from the first line up to the first
+<code>yield</code> statement. The value is returned to the caller, but <code>fetch_rows()</code>
+stays open.  Each subsequent iteration causes <code>fetch_rows()</code> to continue from
+the line after the <code>yield</code> until the next <code>yield</code>, or until the function
+reaches the end, in which case it raises <code>StopIteration</code>. The benefit is that
+the caller can process each row as it is retrieved, instead of waiting for them
+all to be retrieved.  It also avoids the need to create a list in memory.</p>
+<p>The <code>yield from</code> statement was introduced in Python 3.3. I cheated here - the
+following description is taken directly from the Python
+<a href="https://docs.python.org/3/whatsnew/3.3.html#pep-380">manual</a>.</p>
+<blockquote>
+<p>The <code>yield from</code> expression allows a generator to delegate part of its
+operations to another generator. This allows a section of code containing yield
+to be factored out and placed in another generator. Additionally, the
+subgenerator is allowed to return with a value, and the value is made available
+to the delegating generator.</p>
+<p><em>[...]</em></p>
+<p>For simple iterators, <code>yield from iterable</code> is essentially just a shortened
+form of <code>for item in iterable: yield item</code>. <em>[...]</em> However, unlike an
+ordinary loop, <code>yield from</code> allows subgenerators to receive sent and thrown
+values directly from the calling scope, and return a final value to the outer
+generator.</p>
+</blockquote>
+<p>If you want to learn more, you can read the following -</p>
+<ul>
+<li>
+<p><a href="http://legacy.python.org/dev/peps/pep-0255/">PEP 255</a> - Simple Generators</p>
+<blockquote>
+<p>The proposal for adding generators and the <code>yield</code> statement to Python.</p>
+</blockquote>
+</li>
+<li>
+<p><a href="http://legacy.python.org/dev/peps/pep-0342/">PEP 342</a> - Coroutines via
+  Enhanced Generators</p>
+<blockquote>
+<p>The proposal to enhance the API and syntax of generators, making them usable
+as simple coroutines.</p>
+</blockquote>
+</li>
+<li>
+<p><a href="http://legacy.python.org/dev/peps/pep-0380/">PEP 380</a> - Syntax for
+  Delegating to a Subgenerator</p>
+<blockquote>
+<p>The proposal to introduce the <code>yield_from</code> syntax, making delegation to
+sub-generators easy.</p>
+</blockquote>
+</li>
+</ul>
+<p>The <code>asyncio</code> module was introduced in Python 3.4. From the
+<a href="https://docs.python.org/3.4/library/asyncio.html">manual</a>, it </p>
+<blockquote>
+<p>provides infrastructure for writing single-threaded concurrent code using
+coroutines, multiplexing I/O access over sockets and other resources, running
+network clients and servers, and other related primitives.</p>
+</blockquote>
+<p>The big difference between Twisted and <code>asyncio</code> is that the latter makes
+extensive use of the <code>yield from</code> statement. In Twisted you have to specify a
+callback function to be called when the condition is satisfied, and then
+return. With <code>asyncio</code> you can use callbacks in the same way, but it is easier
+to just call <code>yield from</code>, and your function is automatically suspended. When
+the condition is satisfied it continues from the next statement. This makes
+programs much easier to read and to write.</p>
+<p>Here is a simple example of an echo server -</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="k">def</span> <span class="nf">accept_client</span><span class="p">(</span><span class="n">client_reader</span><span class="p">,</span> <span class="n">client_writer</span><span class="p">):</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Task</span><span class="p">(</span>
+        <span class="n">handle_client</span><span class="p">(</span><span class="n">client_reader</span><span class="p">,</span> <span class="n">client_writer</span><span class="p">))</span>
+
+<span class="nd">@asyncio.coroutine</span>
+<span class="k">def</span> <span class="nf">handle_client</span><span class="p">(</span><span class="n">client_reader</span><span class="p">,</span> <span class="n">client_writer</span><span class="p">):</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="k">yield from</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span>
+            <span class="n">client_reader</span><span class="o">.</span><span class="n">readline</span><span class="p">(),</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+        <span class="n">client_writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;BYE&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">start_server</span><span class="p">(</span><span class="n">accept_client</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">server</span><span class="p">)</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">run_forever</span><span class="p">()</span>
+</pre></div>
+
+
+<p>For a fuller example, look at <a href="http://davebehnke.com/python-asyncio-streams-client-server.html">Python AsyncIO - Streams - Client and
+Server</a>.</p>
+<p>I have only scratched the surface, but I have got it working in my project.
+There is a bit of a learning curve to get your head around the concepts, but
+most of it <em>just works</em>. The problem I found is that if something does not
+work, it can be tricky to reason out what is happening. Here is one gotcha that
+caught me.</p>
+<p>Some of my request handlers are quite complex, so I have refactored them by
+splitting them up into smaller functions. If a function needed to block, I
+added a <code>yield from</code> statement, but then I found that the handler returned
+prematurely without doing anything. After much investigation, I found that
+adding <code>yield from</code> changes the function into a generator (or more strictly, a
+coroutine). As explained above, calling a generator simply returns a generator
+object, but it does not execute anything. So I tried using <code>yield from</code> in the
+caller, but this changed <em>it</em> into a coroutine, so I found I had to change
+every function in the chain into a coroutine by adding the <code>@asyncio.coroutine</code>
+decorator you can see above to each function, and then invoke it by using
+<code>yield from</code>. Then everything worked.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+                  <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="https://github.com/gautengpug"><i
+                            class="fa fa-github-square fa-lg"></i> github
+                    </a></li>
+                  </ul>
+                </li>
+
+
+
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="https://groups.google.com/forum/#!forum/gpugsa" target="_blank">
+                Google Group
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://www.meetup.com/Gauteng-Python-Users-Group/" target="_blank">
+                Meetup Group
+            </a>
+        </li>
+      </ul>
+    </li>
+
+                <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group list-inline tagcloud" id="tags">
+                    </ul>
+                </li>
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Gauteng Python User Group
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+</body>
+</html>

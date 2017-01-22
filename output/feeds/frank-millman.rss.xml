@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gauteng Python User Group</title><link>/</link><description></description><atom:link href="/feeds/frank-millman.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 29 Jun 2014 12:18:00 +0200</lastBuildDate><item><title>Introduction to asyncio</title><link>/introduction-to-asyncio.html</link><description>&lt;h1&gt;Introduction to &lt;code&gt;asyncio&lt;/code&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-- &lt;cite&gt;Frank Millman&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If you are writing a server program to handle multiple concurrent connections,
+how do you allow the connections to be handled simultaneously without blocking?
+There are two main approaches.&lt;/p&gt;
+&lt;p&gt;The traditional approach uses threads. The main thread runs an endless loop
+listening for incoming connections. For each connection received, it creates a
+separate thread to handle the connection, and resumes listening. The secondary
+thread reads data from the socket and handles it as required, until one side or
+the other closes the connection. It runs independently of any other thread, so
+it does not have to worry about blocking. It works, but it has two main
+disadvantages. Firstly, the operating system limits the number of threads
+allowed, so it limits the number of concurrent connections achievable.
+Secondly, the operating system switches control between threads arbitrarily,
+and the programmer has no control over this. This can lead to subtle bugs,
+especially if any state is shared between the threads. This can be managed with
+the use of locks and other mechanisms, but if you get it wrong it can be very
+hard to debug.&lt;/p&gt;
+&lt;p&gt;An alternative approach is to use asynchronous I/O. The most popular one in
+Python has for some years been a 3rd-party package called
+&lt;a href="https://twistedmatrix.com/"&gt;Twisted&lt;/a&gt;. It also uses an endless loop to listen
+for incoming connections, but when one is received it passes control directly
+to a request handler within the main thread. The handler reads the data from
+the socket, and then handles it up to a point where it might block. At that
+point it must do three things. It must define some condition indicating what it
+is waiting, it must specify a function to be called when that condition is
+satisfied, and it must return, which passes control back to the main loop. In
+addition to listening for incoming connections, the main loop also checks all
+outstanding conditions. If it finds one that is satisfied, it calls the
+specified function so that the handler can continue with its processing. It
+sounds complicated, but in practice the majority of current connections are in
+a blocked state, so it can handle many connections simultaneously without a
+problem. This approach has two main advantages. Firstly, there is no physical
+limit to the number of concurrent connections allowed, and many thousands have
+been successfully achieved.  Secondly, it is up to each handler to decide when
+to relinquish control, so it is easier for handlers to share data safely
+without the need for locks.  However, there is a disadvantage - if a handler
+does not relinquish control when it is supposed to, the result is that the main
+loop cannot continue, and the entire program will appear to have frozen.
+Handling this correctly is a skill that comes with experience.&lt;/p&gt;
+&lt;p&gt;Python has now introduced its own asynchronous I/O capability. It is called
+&lt;a href="https://docs.python.org/3.4/library/asyncio.html"&gt;asyncio&lt;/a&gt;, and it is included
+in release 3.4. It is similar to the Twisted approach described above, but
+there are some important differences. To explain them, a bit of history is
+required.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;yield&lt;/code&gt; statement was introduced in Python 2.2. Assume a function that
+returns more than one result -&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fetch_rows&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;rows&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;row_no&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fetch_row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row_no&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;rows&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;rows&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The caller would do something like -&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;rows&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fetch_rows&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;rows&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="c1"&gt;# do something&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This works, but the caller has to wait until all rows are retrieved before
+continuing. In the first line, &lt;code&gt;fetch_rows()&lt;/code&gt; returns a list, and the second
+line iterates over the list.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;yield&lt;/code&gt; statement allows the following -&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fetch_rows&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;row_no&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fetch_row&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row_no&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The caller looks the same as before, but the sequence of events is different.
+The &lt;code&gt;yield&lt;/code&gt; statement turns the function into a generator. In the first line,
+&lt;code&gt;fetch_rows()&lt;/code&gt; returns a &lt;em&gt;generator object&lt;/em&gt;. No lines in &lt;code&gt;fetch_rows()&lt;/code&gt; are
+executed yet. The second line iterates over the generator. For the first
+iteration, &lt;code&gt;fetch_rows()&lt;/code&gt; is executed from the first line up to the first
+&lt;code&gt;yield&lt;/code&gt; statement. The value is returned to the caller, but &lt;code&gt;fetch_rows()&lt;/code&gt;
+stays open.  Each subsequent iteration causes &lt;code&gt;fetch_rows()&lt;/code&gt; to continue from
+the line after the &lt;code&gt;yield&lt;/code&gt; until the next &lt;code&gt;yield&lt;/code&gt;, or until the function
+reaches the end, in which case it raises &lt;code&gt;StopIteration&lt;/code&gt;. The benefit is that
+the caller can process each row as it is retrieved, instead of waiting for them
+all to be retrieved.  It also avoids the need to create a list in memory.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;yield from&lt;/code&gt; statement was introduced in Python 3.3. I cheated here - the
+following description is taken directly from the Python
+&lt;a href="https://docs.python.org/3/whatsnew/3.3.html#pep-380"&gt;manual&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The &lt;code&gt;yield from&lt;/code&gt; expression allows a generator to delegate part of its
+operations to another generator. This allows a section of code containing yield
+to be factored out and placed in another generator. Additionally, the
+subgenerator is allowed to return with a value, and the value is made available
+to the delegating generator.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;[...]&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;For simple iterators, &lt;code&gt;yield from iterable&lt;/code&gt; is essentially just a shortened
+form of &lt;code&gt;for item in iterable: yield item&lt;/code&gt;. &lt;em&gt;[...]&lt;/em&gt; However, unlike an
+ordinary loop, &lt;code&gt;yield from&lt;/code&gt; allows subgenerators to receive sent and thrown
+values directly from the calling scope, and return a final value to the outer
+generator.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If you want to learn more, you can read the following -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://legacy.python.org/dev/peps/pep-0255/"&gt;PEP 255&lt;/a&gt; - Simple Generators&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The proposal for adding generators and the &lt;code&gt;yield&lt;/code&gt; statement to Python.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://legacy.python.org/dev/peps/pep-0342/"&gt;PEP 342&lt;/a&gt; - Coroutines via
+  Enhanced Generators&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The proposal to enhance the API and syntax of generators, making them usable
+as simple coroutines.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://legacy.python.org/dev/peps/pep-0380/"&gt;PEP 380&lt;/a&gt; - Syntax for
+  Delegating to a Subgenerator&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The proposal to introduce the &lt;code&gt;yield_from&lt;/code&gt; syntax, making delegation to
+sub-generators easy.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;code&gt;asyncio&lt;/code&gt; module was introduced in Python 3.4. From the
+&lt;a href="https://docs.python.org/3.4/library/asyncio.html"&gt;manual&lt;/a&gt;, it &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;provides infrastructure for writing single-threaded concurrent code using
+coroutines, multiplexing I/O access over sockets and other resources, running
+network clients and servers, and other related primitives.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The big difference between Twisted and &lt;code&gt;asyncio&lt;/code&gt; is that the latter makes
+extensive use of the &lt;code&gt;yield from&lt;/code&gt; statement. In Twisted you have to specify a
+callback function to be called when the condition is satisfied, and then
+return. With &lt;code&gt;asyncio&lt;/code&gt; you can use callbacks in the same way, but it is easier
+to just call &lt;code&gt;yield from&lt;/code&gt;, and your function is automatically suspended. When
+the condition is satisfied it continues from the next statement. This makes
+programs much easier to read and to write.&lt;/p&gt;
+&lt;p&gt;Here is a simple example of an echo server -&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;asyncio&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;accept_client&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;client_reader&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;client_writer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;task&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asyncio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;handle_client&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;client_reader&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;client_writer&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="nd"&gt;@asyncio.coroutine&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;handle_client&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;client_reader&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;client_writer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;yield from&lt;/span&gt; &lt;span class="n"&gt;asyncio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wait_for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;client_reader&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;readline&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;timeout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;10.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;client_writer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rstrip&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;BYE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;break&lt;/span&gt;
+
+&lt;span class="n"&gt;loop&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asyncio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_event_loop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asyncio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;start_server&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;accept_client&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;loop&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run_until_complete&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;loop&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run_forever&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;For a fuller example, look at &lt;a href="http://davebehnke.com/python-asyncio-streams-client-server.html"&gt;Python AsyncIO - Streams - Client and
+Server&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have only scratched the surface, but I have got it working in my project.
+There is a bit of a learning curve to get your head around the concepts, but
+most of it &lt;em&gt;just works&lt;/em&gt;. The problem I found is that if something does not
+work, it can be tricky to reason out what is happening. Here is one gotcha that
+caught me.&lt;/p&gt;
+&lt;p&gt;Some of my request handlers are quite complex, so I have refactored them by
+splitting them up into smaller functions. If a function needed to block, I
+added a &lt;code&gt;yield from&lt;/code&gt; statement, but then I found that the handler returned
+prematurely without doing anything. After much investigation, I found that
+adding &lt;code&gt;yield from&lt;/code&gt; changes the function into a generator (or more strictly, a
+coroutine). As explained above, calling a generator simply returns a generator
+object, but it does not execute anything. So I tried using &lt;code&gt;yield from&lt;/code&gt; in the
+caller, but this changed &lt;em&gt;it&lt;/em&gt; into a coroutine, so I found I had to change
+every function in the chain into a coroutine by adding the &lt;code&gt;@asyncio.coroutine&lt;/code&gt;
+decorator you can see above to each function, and then invoke it by using
+&lt;code&gt;yield from&lt;/code&gt;. Then everything worked.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Frank Millman</dc:creator><pubDate>Sun, 29 Jun 2014 12:18:00 +0200</pubDate><guid>tag:,2014-06-29:introduction-to-asyncio.html</guid><category>2014</category><category>asyncio</category></item></channel></rss>
